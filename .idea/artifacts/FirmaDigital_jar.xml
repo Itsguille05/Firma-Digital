@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="FirmaDigital:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/FirmaDigital_jar</output-path>
+    <root id="archive" name="FirmaDigital.jar">
+      <element id="module-output" name="FirmaDigital" />
+    </root>
+  </artifact>
+</component>
