@@ -1,61 +1,54 @@
-Proyecto: Firma Digital en Java
+# Sistema de Control de Acceso en Java
 
-Descripción del Proyecto
+Este proyecto es un programa desarrollado en Java que implementa un sistema de control de acceso basado en roles. Cada usuario tiene permisos específicos según su rol (Administrador, Usuario o Invitado). El programa permite crear usuarios, seleccionar roles y realizar acciones verificando las políticas de seguridad predefinidas.
 
-Este proyecto es una aplicación en Java que permite la firma y validación de documentos digitales utilizando criptografía asimétrica. La aplicación aprovecha la infraestructura de una KeyStore para almacenar y gestionar las claves pública y privada necesarias para estos procesos.
+---
 
-Características Principales
+## Características
 
-Firma de documentos: el programa genera una firma digital para un archivo de entrada utilizando una clave privada.
+- **Creación de usuarios**: Se pueden crear múltiples usuarios con roles asignados.
+- **Roles soportados**:
+  - Administrador: Acceso completo.
+  - Usuario: Acceso limitado a ciertas acciones.
+  - Invitado: Acceso básico.
+- **Control de acceso**: Valida si un rol tiene permisos para realizar acciones específicas.
+- **Gestión dinámica**: Uso de estructuras de datos como `HashMap` para almacenar usuarios y sus permisos.
 
-Validación de documentos: permite verificar la integridad de un documento y su firma digital correspondiente mediante la clave pública.
+---
 
-Uso de algoritmos seguros como SHA256withRSA.
+## Requisitos
 
-Acceso seguro a las claves desde una KeyStore configurada mediante las propiedades del sistema.
+- **Java**: Versión 8 o superior.
+- **IntelliJ IDEA** (opcional): Para compilar y ejecutar el proyecto.
 
-Manejo de errores detallado para el uso incorrecto de los comandos o la falta de archivos.
+---
 
-Estructura del Proyecto
+## Ejemplo de Uso
 
-Clase ClaveManager: se encarga de gestionar el acceso a la KeyStore para obtener las claves privada y pública necesarias.
+Al iniciar el programa, se presentará un menú con las siguientes opciones:
 
-Clase FirmaDigital: contiene la lógica para firmar y validar documentos.
+1. Crear usuarios.
+2. Seleccionar un usuario y realizar acciones.
+3. Salir del programa.
 
-Clase FVfile: punto de entrada principal del programa que interpreta los argumentos proporcionados por el usuario.
+### Flujo básico:
+1. Selecciona la opción **Crear Usuarios**.
+2. Ingresa el número de usuarios, sus nombres y roles.
+3. Selecciona un usuario de la lista disponible.
+4. Realiza acciones según los permisos del rol asignado.
 
-Clase Util: incluye funciones auxiliares para mostrar mensajes de error y guía de uso.
+---
 
-Flujo de Operación
+## Estructura del Proyecto
 
-El usuario puede ejecutar el programa desde la línea de comandos proporcionando las siguientes opciones:
+```
+src/
+├── Principal.java          # Clase principal
+├── Usuario.java       # Representa los usuarios del sistema
+├── ControlDeAcceso.java # Implementa las políticas de seguridad
+```
 
-Firmar un Documento
+---
 
-java -Dpath_keystore=ruta_keystore -Dpassword_keystore=contraseña FVfile firmar nombreDocumento
-
-Esto genera un archivo de firma con el prefijo firma_.
-
-Validar un Documento
-
-java -Dpath_keystore=ruta_keystore -Dpassword_keystore=contraseña FVfile validar nombreDocumento firmaDigital
-
-Esto verifica la validez del documento y muestra el resultado.
-
-Bibliotecas Usadas
-
-java.io.*: para operaciones de entrada/salida de archivos.
-
-java.security.*: para operaciones criptográficas, manejo de claves y firmas.
-
-java.security.cert.Certificate: para acceder a los certificados almacenados en la KeyStore.
-
-Dependencias
-
-Este proyecto no utiliza librerías externas, pero requiere la configuración de las siguientes propiedades del sistema al ejecutarse:
-
--Dpath_keystore: ruta al archivo de KeyStore.
-
--Dpassword_keystore: contraseña para acceder al KeyStore.
-
-Asegúrate de tener configurada una KeyStore con el alias clavesP que contenga un par de claves (pública y privada) para el correcto funcionamiento del programa.
+## Contribuciones
+Las contribuciones son bienvenidas. Por favor, realiza un fork del repositorio y abre un pull request con tus mejoras o sugerencias.
